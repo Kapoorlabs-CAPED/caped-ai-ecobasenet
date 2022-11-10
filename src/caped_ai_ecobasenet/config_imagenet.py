@@ -38,26 +38,27 @@ class ImageNetConfig:
     files_imagenet: Files
     params_train: ParamsTrain
 
-    def to_json(self):
+    @classmethod
+    def to_json(cls):
 
-        self.is_valid()
+        cls.is_valid()
         config = {
-            "epochs": self.params_train.epochs,
-            "learning_rate": self.params_train.learning_rate,
-            "batch_size": self.params_train.batch_size,
-            "model_dir": self.paths_imagenet.model_dir,
-            "image_dir": self.paths_imagenet.image_dir,
-            "label_dir": self.paths_imagenet.label_dir,
-            "train_file": self.files_imagenet.train_file,
-            "val_file": self.files_imagenet.val_file,
-            "test_file": self.files_imagenet.test_file,
+            "epochs": cls.params_train.epochs,
+            "learning_rate": cls.params_train.learning_rate,
+            "batch_size": cls.params_train.batch_size,
+            "model_dir": cls.paths_imagenet.model_dir,
+            "image_dir": cls.paths_imagenet.image_dir,
+            "label_dir": cls.paths_imagenet.label_dir,
+            "train_file": cls.files_imagenet.train_file,
+            "val_file": cls.files_imagenet.val_file,
+            "test_file": cls.files_imagenet.test_file,
         }
 
         save_json(
-            config, self.paths_imagenet.model_dir + "/" + "parameters.json"
+            config, cls.paths_imagenet.model_dir + "/" + "parameters.json"
         )
 
-    def is_valid(self, return_invalid=False):
+    def is_valid(cls, return_invalid=False):
         """Check if configuration is valid.
         Returns
         -------
@@ -66,17 +67,15 @@ class ImageNetConfig:
         """
 
         ok = {}
-        ok["epochs"] = isinstance(self.params_train.epochs, int)
-        ok["learning_rate"] = isinstance(
-            self.params_train.learning_rate, float
-        )
-        ok["batch_size"] = isinstance(self.params_train.batch_size, int)
-        ok["model_dir"] = isinstance(self.paths_imagenet.model_dir, str)
-        ok["image_dir"] = isinstance(self.paths_imagenet.image_dir, str)
-        ok["label_dir"] = isinstance(self.paths_imagenet.label_dir, str)
-        ok["train_file"] = isinstance(self.files_imagenet.train_file, str)
-        ok["val_file"] = isinstance(self.files_imagenet.val_file, str)
-        ok["test_file"] = isinstance(self.files_imagenet.test_file, str)
+        ok["epochs"] = isinstance(cls.params_train.epochs, int)
+        ok["learning_rate"] = isinstance(cls.params_train.learning_rate, float)
+        ok["batch_size"] = isinstance(cls.params_train.batch_size, int)
+        ok["model_dir"] = isinstance(cls.paths_imagenet.model_dir, str)
+        ok["image_dir"] = isinstance(cls.paths_imagenet.image_dir, str)
+        ok["label_dir"] = isinstance(cls.paths_imagenet.label_dir, str)
+        ok["train_file"] = isinstance(cls.files_imagenet.train_file, str)
+        ok["val_file"] = isinstance(cls.files_imagenet.val_file, str)
+        ok["test_file"] = isinstance(cls.files_imagenet.test_file, str)
 
         if return_invalid:
             return all(ok.values()), tuple(k for (k, v) in ok.items() if not v)
