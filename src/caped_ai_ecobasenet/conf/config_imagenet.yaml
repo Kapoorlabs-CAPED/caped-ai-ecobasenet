@@ -1,0 +1,10 @@
+params_train:
+
+   epochs: 200
+   learning_rate: 0.001
+   batch_size: 2
+
+defaults:
+
+   files_imagenet: imagenet_files
+   paths_imagenet: imagenet_paths_rz

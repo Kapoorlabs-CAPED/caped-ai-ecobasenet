@@ -1,0 +1,3 @@
+train_file: 'imagnet_training.npz'
+val_file: 'imagenet_val.npz'
+test_file: 'imagenet_test.npz'

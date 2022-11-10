@@ -1,0 +1,3 @@
+model_dir: '/home/debian/WorkHorse/Image_Net/Models/'
+image_dir: '/home/debian/WorkHorse/Image_Net/Images/'
+label_dir: '/home/debian/WorkHorse/Image_Net/Labels/'
