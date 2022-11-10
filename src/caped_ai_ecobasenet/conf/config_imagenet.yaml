@@ -6,5 +6,6 @@ params_train:
 
 defaults:
 
-   files_imagenet: imagenet_files
-   paths_imagenet: imagenet_paths_rz
+   - files_imagenet: imagenet_files
+   - paths_imagenet: imagenet_paths_rz
+   - __self__
