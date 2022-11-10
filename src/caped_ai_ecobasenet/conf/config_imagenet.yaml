@@ -8,4 +8,4 @@ defaults:
 
    - files_imagenet: imagenet_files
    - paths_imagenet: imagenet_paths_rz
-   - __self__
+   - _self_
