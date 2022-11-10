@@ -1,0 +1,12 @@
+files_imagenet:
+  train_file: imagnet_training.npz
+  val_file: imagenet_val.npz
+  test_file: imagenet_test.npz
+paths_imagenet:
+  model_dir: /home/debian/WorkHorse/Image_Net/Models/
+  image_dir: /home/debian/WorkHorse/Image_Net/Images/
+  label_dir: /home/debian/WorkHorse/Image_Net/Labels/
+params_train:
+  epochs: 200
+  learning_rate: 0.001
+  batch_size: 2
