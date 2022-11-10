@@ -54,9 +54,7 @@ def to_json(config: ImageNetConfig):
         "test_file": config.files_imagenet.test_file,
     }
 
-    save_json(
-        config, config.paths_imagenet.model_dir + "/" + "parameters.json"
-    )
+    save_json(config, config["model_dir"] + "/" + "parameters.json")
 
 
 def is_valid(config: ImageNetConfig, return_invalid=False):
