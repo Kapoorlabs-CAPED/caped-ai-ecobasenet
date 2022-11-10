@@ -22,6 +22,6 @@ def main(config: ImageNetConfig):
     config.to_json()
 
 
-if __name__ == "main":
+if __name__ == "__main__":
 
     main()
