@@ -6,9 +6,11 @@ configstore = ConfigStore.instance()
 configstore.store(name="ImageNetConfig", node=ImageNetConfig)
 
 
-@hydra.main(config_path="conf", config_name="config_imagenet")
+@hydra.main(
+    version_base=None, config_path="conf", config_name="config_imagenet"
+)
 def main(config: ImageNetConfig):
-
+    print("hi", config)
     # epochs = config.params_train.epochs
     # learning_rate = config.params_train.learning_rate
     # batch_size = config.params_train.batch_size
