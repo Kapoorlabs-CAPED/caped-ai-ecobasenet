@@ -59,7 +59,7 @@ def to_json(config: ImageNetConfig):
     )
 
 
-def is_valid(config: dict, return_invalid=False):
+def is_valid(config: ImageNetConfig, return_invalid=False):
     """Check if configuration is valid.
     Returns
     -------
@@ -68,15 +68,15 @@ def is_valid(config: dict, return_invalid=False):
     """
 
     ok = {}
-    ok["epochs"] = isinstance(config["epochs"], int)
-    ok["learning_rate"] = isinstance(config["learning_rate"], float)
-    ok["batch_size"] = isinstance(config["batch_size"], int)
-    ok["model_dir"] = isinstance(config["model_dir"], str)
-    ok["image_dir"] = isinstance(config["image_dir"], str)
-    ok["label_dir"] = isinstance(config["label_dir"], str)
-    ok["train_file"] = isinstance(config["train_file"], str)
-    ok["val_file"] = isinstance(config["val_file"], str)
-    ok["test_file"] = isinstance(config["test_file"], str)
+    ok["epochs"] = isinstance(config.params_train.epochs, int)
+    ok["learning_rate"] = isinstance(config.params_train.learning_rate, float)
+    ok["batch_size"] = isinstance(config.params_train.batch_size, int)
+    ok["model_dir"] = isinstance(config.paths_imagenet.model_dir, str)
+    ok["image_dir"] = isinstance(config.paths_imagenet.image_dir, str)
+    ok["label_dir"] = isinstance(config.paths_imagenet.label_dir, str)
+    ok["train_file"] = isinstance(config.files_imagenet.train_file, str)
+    ok["val_file"] = isinstance(config.files_imagenet.val_file, str)
+    ok["test_file"] = isinstance(config.files_imagenet.test_file, str)
 
     if return_invalid:
         return all(ok.values()), tuple(k for (k, v) in ok.items() if not v)
